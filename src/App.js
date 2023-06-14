@@ -1,9 +1,12 @@
+import React, {useState} from 'react';
 import logo from './assets/investment-calculator-logo.png';
 import Header from './components/Header/Header';
 import Table from './components/Results/Table/Table';
 import Form from './components/Form/Form/Form';
 
 function App() {
+
+  const [yearlyData, setYearlyData] = useState([]);
 
   const calculateHandler = (userInput) => {
 
@@ -17,6 +20,7 @@ function App() {
       const yearlyInterest = currentSavings * expectedReturn;
       currentSavings += yearlyInterest + yearlyContribution;
       yearlyData.push({
+        id:i,
         year: i + 1,
         yearlyInterest: yearlyInterest,
         savingsEndOfYear: currentSavings,
@@ -24,17 +28,15 @@ function App() {
       });
     }
 
+    setYearlyData(yearlyData);
+
   };
 
   return (
     <div>
-
       <Header title="Investment Calculator" logo={logo}/>
-
       <Form onFormSubmit={calculateHandler}/>
-
-      <Table />
-
+      {yearlyData.length!==0 ? <Table yearlyData={yearlyData}/> : <p style={{textAlign: 'center'}}>No data</p> }
     </div>
   );
 }
