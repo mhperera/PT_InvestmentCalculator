@@ -1,5 +1,5 @@
 # Investment Manager
 
-[Investment Planner Screenshot](./investmentPlanner.png)
+![Investment Planner Screenshot](./investmentPlanner.png)
 
 <br>
