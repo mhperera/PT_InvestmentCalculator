@@ -20,11 +20,11 @@ const Table = (props) => {
         <tbody>
             { props.yearlyData.map((data)=>(
                 <tr key={data.id}>
-                    <td>{data.year}</td> {/* YEAR NUMBER */}
-                    <td>{data.savingsEndOfYear}</td> {/* TOTAL SAVINGS END OF YEAR */}
-                    <td>{data.yearlyInterest}</td> {/* INTEREST GAINED IN YEAR */}
-                    <td>{totalInterestgained += data.yearlyInterest}</td> {/* TOTAL INTEREST GAINED */}
-                    <td>{totalInvestedCapital += data.yearlyContribution}</td> {/* TOTAL INVESTED CAPITAL */}
+                    <td>{data.year}</td>
+                    <td>{data.savingsEndOfYear}</td>
+                    <td>{data.yearlyInterest}</td>
+                    <td>{totalInterestgained += data.yearlyInterest}</td>
+                    <td>{totalInvestedCapital += data.yearlyContribution}</td>
                 </tr>
             )) }
         </tbody>

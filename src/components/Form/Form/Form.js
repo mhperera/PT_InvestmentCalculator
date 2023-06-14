@@ -12,18 +12,41 @@ const Form = (props) => {
 	const durationRef = useRef();
 
 	const handleFormSubmission = (event) => {
+
 		event.preventDefault();
-		const userInput = {
-			'current-savings' : currentSavingsRef.current.value,
-			'yearly-contribution' : yearlyContributionRef.current.value,
-			'expected-return' : expectedReturnRef.current.value,
-			'duration' : durationRef.current.value,
+
+		const currentSavings = currentSavingsRef.current.value;
+		const yearlyContribution = yearlyContributionRef.current.value;
+		const expectedReturn = expectedReturnRef.current.value;
+		const duration = durationRef.current.value;
+
+		if(currentSavings.trim().length === 0){
+			return props.onError("Invalid Current Saving Value");
 		}
+		if(yearlyContribution.trim().length === 0){
+			return props.onError("Invalid Yearly Contribution");
+		}
+		if(expectedReturn.trim().length === 0){
+			return props.onError("Invalid Expected Return");
+		}
+		if(duration.trim().length === 0){
+			return props.onError("Invalid Duration");
+		}
+
+		const userInput = {
+			'current-savings' : currentSavings,
+			'yearly-contribution' : yearlyContribution,
+			'expected-return' : expectedReturn,
+			'duration' : duration,
+		}
+
 		currentSavingsRef.current.value = '';
 		yearlyContributionRef.current.value = '';
 		expectedReturnRef.current.value = '';
 		durationRef.current.value = '';
+
 		props.onFormSubmit(userInput);
+
 	}
 
 	return (
